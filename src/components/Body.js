@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 const Body = () => {
   //local state variable
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
-  const [searctText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
+
+  console.log("body");
 
   useEffect(() => {
     fetchData();
@@ -32,29 +34,45 @@ const Body = () => {
           <input
             type="text"
             className="search-box"
-            value={searctText}
+            placeholder="Search for restaurants"
+            value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+            className="search-btn"
             onClick={() => {
-              console.log(searctText);
+              console.log(searchText);
+              const filteredList = listOfRestaurants.filter((res) =>
+                res.info.name.includes(searchText)
+              );
+              setListOfRestaurant(filteredList);
             }}
           >
             Search
           </button>
         </div>
+
         <button
           className="filter-btn"
           onClick={() => {
             const newList = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4
+              (res) => res.info.avgRating > 3.9
             );
             setListOfRestaurant(newList);
           }}
         >
-          Top Rated Restaurants
+          Ratings 3.9+
+        </button>
+
+        <button
+          className="filter-btn"
+          onClick={() => {
+            setListOfRestaurant(resList);
+          }}
+        >
+          reset
         </button>
       </div>
       <div className="res-container">
