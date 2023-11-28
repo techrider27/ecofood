@@ -14,7 +14,7 @@ const Header = () => {
           <li>About Us</li>
           <li>Contact Us</li>
           {/* <li>Cart</li> */}
-          <button
+          {/* <button
             className="login-btn"
             onClick={() => {
               btnNamereact === "Login"
@@ -23,7 +23,7 @@ const Header = () => {
             }}
           >
             {btnNamereact}
-          </button>
+          </button> */}
         </ul>
       </div>
     </div>
